@@ -332,3 +332,11 @@ article a {
     padding: 6px 10px;
     border-radius: 6px;
 }
+/* Effet visuel sur les images uniquement quand le mode sombre est activé */
+body.dark-mode article img, 
+body.dark-mode .app-header img {
+    filter: brightness(0.85) contrast(1.1);
+    background-color: #ffffff; /* Optionnel : ajoute un fond blanc très légèrement arrondi si tu veux garder le carré mais plus propre */
+    border-radius: 8px;
+    padding: 4px;
+}
