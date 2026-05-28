@@ -1,0 +1,332 @@
+:root {
+    --primary-color: #0052cc;
+    --primary-hover: #0041a3;
+    --success-color: #28a745;
+    --success-hover: #218838;
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-secondary: #666666;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode {
+    --bg-color: #121214;
+    --card-bg: #1a1a1e;
+    --text-color: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #2d2d34;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+header {
+    background-color: #0052cc;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    margin: 10px 0;
+}
+
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    margin-top: 10px;
+    outline: none;
+}
+
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.app-header img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.download-btn {
+    display: inline-block;
+    background-color: var(--success-color);
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.download-btn:hover {
+    background-color: var(--success-hover);
+}
+
+body > div[style*="display: flex"] {
+    display: flex !important;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    gap: 30px;
+}
+
+.sidebar {
+    width: 250px;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    height: fit-content;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-btn {
+    width: 100%;
+    text-align: left;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.content-grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+article {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
+
+article img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--bg-color);
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid var(--border-color);
+}
+
+article a {
+    display: block;
+    text-align: center;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+/* Styles Commentaires */
+.comment-form {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.comment-input-pseudo, .comment-input-text {
+    width: 100%;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 12px 16px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.rating-selection {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+    background: var(--card-bg);
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    align-self: flex-start;
+}
+
+.rating-selection input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.rating-selection .rating-title {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-right: 10px;
+    order: 1;
+}
+
+.rating-selection label {
+    font-size: 1.6rem;
+    color: #cbd5e1;
+    cursor: pointer;
+}
+
+.rating-selection input[type="radio"]:checked ~ label,
+.rating-selection label:hover,
+.rating-selection label:hover ~ label {
+    color: #ffb703;
+}
+
+.comment-submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.single-comment {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.comment-flex {
+    display: flex;
+    gap: 16px;
+}
+
+.user-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+}
+
+.stars-display {
+    color: #ffb703;
+    margin-bottom: 8px;
+}
+
+.delete-comment-btn {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+}

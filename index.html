@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ProApp - Votre catalogue de logiciels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <button class="theme-toggle" id="themeBtn">🌙 Mode Sombre</button>
+        <h1>ProApp</h1>
+        <p>Le meilleur endroit pour télécharger vos logiciels préférés !</p>
+        <input type="text" id="search" class="search-bar" placeholder="Rechercher des applications (ex: Chrome, Discord, Steam...)">
+    </header>
+
+    <div style="display: flex;">
+        
+        <aside class="sidebar">
+            <h3>Catégories</h3>
+            <ul>
+                <li><button class="filter-btn active" data-cat="tous">Tout afficher</button></li>
+                <li><button class="filter-btn" data-cat="internet">Internet</button></li>
+                <li><button class="filter-btn" data-cat="discussion">Discussion</button></li>
+                <li><button class="filter-btn" data-cat="jeux vidéo">Jeux Vidéo</button></li>
+                <li><button class="filter-btn" data-cat="musique">Musique</button></li>
+            </ul>
+        </aside>
+
+        <section class="content-grid">
+            
+            <article>
+                <span class="badge">Internet</span>
+                <img src="chrome.png" alt="Logo Chrome">
+                <h2>Google Chrome</h2>
+                <p>Le navigateur web le plus populaire, rapide et sécurisé par Google.</p>
+                <a href="Chrome.html">Voir la fiche</a>
+            </article>
+
+            <article>
+                <span class="badge">Discussion</span>
+                <img src="discord.png" alt="Logo Discord">
+                <h2>Discord</h2>
+                <p>Idéal pour discuter en salon vocal et textuel avec vos communautés.</p>
+                <a href="discord.html">Voir la fiche</a>
+            </article>
+
+            <article>
+                <span class="badge">Jeux Vidéo</span>
+                <img src="steam.png" alt="Logo Steam">
+                <h2>Steam</h2>
+                <p>La plateforme incontournable pour acheter et lancer tous vos jeux PC.</p>
+                <a href="steam.html">Voir la fiche</a>
+            </article>
+
+            <article>
+                <span class="badge">Musique</span>
+                <img src="spotify.png" alt="Logo Spotify">
+                <h2>Spotify</h2>
+                <p>Écoutez des millions de musiques et de podcasts en streaming.</p>
+                <a href="spotify.html">Voir la fiche</a>
+            </article>
+
+            <article>
+                <span class="badge">Internet</span>
+                <img src="edge.png" alt="Logo Edge">
+                <h2>Microsoft Edge</h2>
+                <p>Le navigateur rapide de Microsoft avec l'intelligence artificielle Copilot.</p>
+                <a href="edge.html">Voir la fiche</a>
+            </article>
+
+            <article>
+                <span class="badge">Jeux Vidéo</span>
+                <img src="ldplayer.png" alt="Logo LDPlayer">
+                <h2>LDPlayer</h2>
+                <p>Un émulateur Android super léger pour jouer à vos jeux mobiles sur PC.</p>
+                <a href="ldplayer.html">Voir la fiche</a>
+            </article>
+
+            <article>
+                <span class="badge">Jeux Vidéo</span>
+                <img src="minecraft.png" alt="Logo Minecraft">
+                <h2>Minecraft Education</h2>
+                <p>Explorez, construisez et apprenez à coder dans l'univers de Minecraft.</p>
+                <a href="minecraft-education.html">Voir la fiche</a>
+            </article>
+
+            <article>
+                <span class="badge">Jeux Vidéo</span>
+                <img src="brawlstars.png" alt="Logo Brawl Stars">
+                <h2>Brawl Stars</h2>
+                <p>Un jeu de combat multijoueur en arène 3v3 ultra dynamique.</p>
+                <a href="brawlstars.html">Voir la fiche</a>
+            </article>
+
+            <article>
+                <span class="badge">Jeux Vidéo</span>
+                <img src="geometrie.png" alt="Logo Geometry Dash">
+                <h2>Geometry Dash</h2>
+                <p>Franchissez des obstacles géométriques au rythme d'une musique survoltée.</p>
+                <a href="geometry-dash.html">Voir la fiche</a>
+            </article>
+
+        </section>
+    </div>
+
+    <script>
+        const themeBtn = document.getElementById('themeBtn');
+        const searchInput = document.getElementById('search');
+        const articles = document.querySelectorAll('article');
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                if (document.body.classList.contains('dark-mode')) {
+                    themeBtn.textContent = "☀️ Mode Clair";
+                } else {
+                    themeBtn.textContent = "🌙 Mode Sombre";
+                }
+            });
+        }
+
+        function filterApps() {
+            const searchText = searchInput.value.toLowerCase();
+            const activeBtn = document.querySelector('.filter-btn.active');
+            const activeCategory = activeBtn ? activeBtn.getAttribute('data-cat').toLowerCase().trim() : "tous";
+
+            articles.forEach(article => {
+                const title = article.querySelector('h2').textContent.toLowerCase();
+                const badgeText = article.querySelector('.badge').textContent.toLowerCase().trim();
+
+                const matchesSearch = title.includes(searchText);
+                const matchesCategory = (activeCategory === "tous" || badgeText === activeCategory);
+
+                if (matchesSearch && matchesCategory) {
+                    article.style.display = "flex";
+                } else {
+                    article.style.display = "none";
+                }
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', filterApps);
+        }
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const currentActive = document.querySelector('.filter-btn.active');
+                if (currentActive) currentActive.classList.remove('active');
+                this.classList.add('active');
+                filterApps();
+            });
+        });
+    </script>
+</body>
+</html>
